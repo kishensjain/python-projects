@@ -1,3 +1,4 @@
-temp = float(input("Enter the temperature in celsius: "))
-
-print(f"The temperature is {temp} celsius")
+from src.controller import ThermostatController
+def main():
+    thermostat = ThermostatController()
+    print(thermostat.get_current_temperature())
