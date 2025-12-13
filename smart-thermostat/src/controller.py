@@ -1,5 +1,6 @@
 from src.sensor import TemperatureSensor
 from src.modes import HeatMode, CoolMode, OffMode
+import json
 class ThermostatController:
     def get_current_temperature(self):
         sensor = TemperatureSensor()
@@ -10,9 +11,13 @@ class ThermostatController:
             return e
     
     def determine_mode(self, temperature):
-        if temperature < 20:
+        with open("src/temp_thresholds.json", "r") as f:
+            thresholds = json.load(f)
+        min_temp = thresholds["heating"]["min_temperature"]
+        max_temp = thresholds["heating"]["max_temperature"]
+        if temperature < min_temp:
             return HeatMode()
-        elif temperature > 30:
+        elif temperature > max_temp:
             return CoolMode()
         else:
             return OffMode()

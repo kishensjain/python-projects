@@ -1,0 +1,11 @@
+{
+  "heating": {
+    "min_temperature": 18,
+    "max_temperature": 22
+  },
+  "cooling": {
+    "min_temperature": 24,
+    "max_temperature": 28
+  },
+  "units": "celsius"
+}
