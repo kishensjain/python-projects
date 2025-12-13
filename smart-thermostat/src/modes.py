@@ -1,8 +1,11 @@
 class HeatMode:
-    pass
+    def __str__(self):
+        return "Heating Mode"
 
 class CoolMode:
-    pass
+    def __str__(self):
+        return "Cooling Mode"
 
 class OffMode:
-    pass
+    def __str__(self):
+        return "Off Mode"
