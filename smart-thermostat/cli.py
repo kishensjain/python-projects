@@ -1,8 +1,16 @@
 from src.controller import ThermostatController
+from src.logger import ThermostatLogger
 def main():
     thermostat = ThermostatController()
-    print(f"Current temp: {thermostat.get_current_temperature()}")
-    print(f"Current mode: {thermostat.get_mode()}")
+    logger = ThermostatLogger()
+
+    temperature = thermostat.get_current_temperature()
+    mode = thermostat.get_mode()
+
+    print(f"Current temp: {temperature}")
+    print(f"Current mode: {mode}")
+
+    logger.lof(temperature, mode)
 
 if __name__ == "__main__":
     main()
