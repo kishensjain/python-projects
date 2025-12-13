@@ -8,6 +8,7 @@ class ThermostatController:
         config_path = Path(__file__).parent / "temp_thresholds.json"
         with open(config_path, "r") as f:
             self.thresholds = json.load(f)
+
     def get_current_temperature(self):
         sensor = TemperatureSensor()
         try:

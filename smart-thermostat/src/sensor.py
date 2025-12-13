@@ -2,4 +2,4 @@ import json
 class TemperatureSensor:
 
     def read_temperature(self):
-        return 11
+        return 34
