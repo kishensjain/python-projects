@@ -4,8 +4,8 @@
     "max_temperature": 22
   },
   "cooling": {
-    "min_temperature": 24,
-    "max_temperature": 28
+    "min_temperature": 26,
+    "max_temperature": 30
   },
   "units": "celsius"
 }

@@ -2,7 +2,7 @@ from datetime import datetime
 
 class ThermostatLogger:
     
-    def __init__(self, log_file='thermostat.log'):
+    def __init__(self, log_file='thermostat.log'):    
         self.log_file = log_file
     
     def lof(self, temperature, mode):

@@ -1,5 +1,9 @@
-import json
+import random
+from src.exceptions import SensorError
 class TemperatureSensor:
 
     def read_temperature(self):
-        return 34
+        try:
+            return random.randint(10,35)
+        except Exception:
+            raise SensorError("Failed to read temperature")

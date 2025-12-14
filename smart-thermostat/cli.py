@@ -1,11 +1,12 @@
 from src.controller import ThermostatController
 from src.logger import ThermostatLogger
+from src.exceptions import ConfigError, SensorError
 import time
 def main():
-    thermostat = ThermostatController()
-    logger = ThermostatLogger()
-
     try:
+        thermostat = ThermostatController()
+        logger = ThermostatLogger()
+
         while True:
             temperature = thermostat.get_current_temperature()
             mode = thermostat.get_mode()
@@ -20,6 +21,12 @@ def main():
             
     except KeyboardInterrupt:
         print("\nThermostat stopped.")
+    
+    except ConfigError as e:
+        print(f"CONFIG ERROR: {e}")
+
+    except SensorError as e:
+        print(f"SENSOR ERROR: {e}")
 
 if __name__ == "__main__":
     main()

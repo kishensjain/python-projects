@@ -1,13 +1,17 @@
 from src.sensor import TemperatureSensor
 from src.modes import HeatMode, CoolMode, OffMode
+from src.exceptions import ConfigError
 import json
 from pathlib import Path
 class ThermostatController:
 
     def __init__(self):
-        config_path = Path(__file__).parent / "temp_thresholds.json"
-        with open(config_path, "r") as f:
-            self.thresholds = json.load(f)
+        try:
+            config_path = Path(__file__).parent / "temp_thresholds.json"
+            with open(config_path, "r") as f:
+                self.thresholds = json.load(f)
+        except Exception:
+            raise ConfigError("Invalid or missing config file")
 
     def get_current_temperature(self):
         sensor = TemperatureSensor()
