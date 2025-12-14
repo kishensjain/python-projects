@@ -8,8 +8,7 @@ def main():
         logger = ThermostatLogger()
 
         while True:
-            temperature = thermostat.get_current_temperature()
-            mode = thermostat.get_mode()
+            temperature ,mode = thermostat.get_mode()
 
             print(f"Current temp: {temperature}")
             print(f"Current mode: {mode}")

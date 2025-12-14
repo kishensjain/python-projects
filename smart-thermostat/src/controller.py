@@ -33,4 +33,4 @@ class ThermostatController:
     def get_mode(self):
         temperature = self.get_current_temperature()
         mode = self.determine_mode(temperature)
-        return mode
+        return (temperature,mode)
