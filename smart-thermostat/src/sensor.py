@@ -5,5 +5,5 @@ class TemperatureSensor:
     def read_temperature(self):
         try:
             return random.randint(10,35)
-        except Exception:
-            raise SensorError("Failed to read temperature")
+        except Exception as e:
+            raise SensorError("Failed to read temperature") from e

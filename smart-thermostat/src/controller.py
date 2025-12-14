@@ -10,15 +10,15 @@ class ThermostatController:
             config_path = Path(__file__).parent / "temp_thresholds.json"
             with open(config_path, "r") as f:
                 self.thresholds = json.load(f)
-        except Exception:
-            raise ConfigError("Invalid or missing config file")
+        except Exception as e:
+            raise ConfigError("Invalid or missing config file") from e
 
     def get_current_temperature(self):
         sensor = TemperatureSensor()
         try:
             return sensor.read_temperature()
         except Exception as e:
-            return e
+            raise
     
     def determine_mode(self, temperature):
         min_temp = self.thresholds["heating"]["min_temperature"]
