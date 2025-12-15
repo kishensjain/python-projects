@@ -4,7 +4,6 @@ from src.exceptions import ConfigError
 import json
 from pathlib import Path
 class ThermostatController:
-
     def __init__(self):
         config_path = Path(__file__).parent / "temp_thresholds.json"
 
@@ -45,14 +44,19 @@ class ThermostatController:
             raise
     
     def determine_mode(self, temperature):
-        min_temp = self.thresholds["heating"]["min_temperature"]
-        max_temp = self.thresholds["heating"]["max_temperature"]
-        if temperature < min_temp:
+        heating = self.thresholds["heating"]
+        neutral = self.thresholds["neutral"]
+        cooling = self.thresholds["cooling"]
+
+        if temperature < heating["min_temperature"]:
             return HeatMode()
-        elif temperature > max_temp:
+
+        elif temperature >= cooling["min_temperature"]:
             return CoolMode()
+
         else:
             return OffMode()
+
     
     def get_mode(self):
         temperature = self.get_current_temperature()
