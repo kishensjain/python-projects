@@ -45,7 +45,7 @@ class ThermostatController:
     
     def determine_mode(self, temperature):
         heating = self.thresholds["heating"]
-        neutral = self.thresholds["neutral"]
+        # neutral = self.thresholds["neutral"]
         cooling = self.thresholds["cooling"]
 
         if temperature < heating["min_temperature"]:
