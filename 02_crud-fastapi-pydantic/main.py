@@ -22,21 +22,21 @@ def get_books():
 @app.post("/book")
 def add_book(book: Book):
     books.append(book)
-    return {"message": "Book added successfully"}, 201 
+    return {"message": "Book added successfully"}
 
-@app.put("/book/{id}")
+@app.put("/book/{book_id}")
 def update_book(book_id: int, updated_book: Book):
     for b in books:
         if b.id == book_id:
             b.name = updated_book.name
             b.author = updated_book.author
             return b, {"message": "Book updated successfully"}
-    return {"message": "Book not found"}, 404
+    return {"message": "Book not found"}
 
-@app.delete("/book/{id}")
+@app.delete("/book/{book_id}")
 def delete_book(book_id: int):
     for b in books:
         if b.id == book_id:
             books.remove(b)
             return {"message": "Book deleted successfully"}
-    return {"message": "Book not found"}, 404
+    return {"message": "Book not found"}
