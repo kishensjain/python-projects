@@ -22,7 +22,7 @@ def get_books():
 @app.post("/book")
 def add_book(book: Book):
     books.append(book)
-    return {"message": "Book added successfully"}, 201,book
+    return {"message": "Book added successfully"}, 201 
 
 @app.put("/book/{id}")
 def update_book(book_id: int, updated_book: Book):
